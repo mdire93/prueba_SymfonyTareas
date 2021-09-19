@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <!-- Bootstrap CSS -->
+        
+        <link href="{{ asset ('css/bootstrap.css') }}" rel="stylesheet" >
+        <link href="{{ asset ('estilo.css') }}" rel="stylesheet" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>{% block title %}PRUEBA TÉCNICA{% endblock %}</title>
+        {% block stylesheets %}
+        
+        {% endblock %}
+    </head>
+    <body> 
+        <div class="menu text-center">
+
+            <h2 class="mt-2">PRUEBA TÉCNICA KOSAAS</h2>
+            
+            
+            <a class="menu_item" href="{{'/'}}"> INICIO</a>
+            <a class="menu_item" href="{{'/login'}}"> LOGIN</a>
+                <a class="menu_item" href="{{'/usuarios'}}"> USUARIOS</a>
+                <a class="menu_item" href="{{'/estados'}}"> ESTADOS</a>
+                <a class="menu_item" href="{{'/tareas'}}"> TAREAS</a>
+                {% if app.session.get('usuario') %}
+                Bienvenido {{app.session.get('usuario')}}
+                <a class="menu_item" href="{{'/logout'}}"> LOGOUT</a>
+                {% endif %}
+            </div>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+       
+        {% endblock %}
+    </div>
+    </body>
+</html>

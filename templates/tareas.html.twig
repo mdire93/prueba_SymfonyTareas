@@ -1,0 +1,62 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">LISTADO DE TAREAS</h2>
+ 
+ 
+ <form action="{{'/buscartareas'}}" name="buscar">
+    <label for="buscar">Buscar tarea por nombre: </label>
+     <input class="mb-2 buscar" type="text" name="buscar" placeholder="Buscar tarea..."> 
+     <input type="submit" value="Buscar">
+
+ </form>
+     <a href="{{'/tareas'}}"><button>Ver todas</button></a>
+     
+ <table class="table">
+     <thead class="table_title">
+         <th>Nombre</th>
+         <th> Descripción</th>
+         <th> Fecha </th>
+         <th> Estado</th>
+         <th > Usuario</th>
+         <th > </th>
+     </thead>
+     
+     <tbody>
+         {% for tarea in tareas %}
+         <tr>
+         <td > {{ tarea.nombre }}</td>
+        <td> {{ tarea.descripcion }}</td>     
+         <td>  {{tarea.fechaCreacion }} </td>
+         {% for estado in estados %} 
+            {% if (tarea.idEstado == estado.id)  %}
+                <td> {{estado.nombre}} </td>
+            {% endif %}
+         {% endfor %}   
+         {% for usuario in usuarios %} 
+            {% if (tarea.idUsuario == usuario.id)  %}
+                <td> {{usuario.usuario}} {{ usuario.nombre }} {{ usuario.apellido }}</td>
+            {% endif %}
+         {% endfor %}<td>
+             
+        {% if app.session.get('usuario') %}
+         <a href="{{ path('edittarea', {'id' : tarea.id }) }}"><button>Editar</button></a></td>
+         {% endif %}
+         </tr>
+         {% endfor %} 
+     </tbody>
+      </table>
+         <a href="{{'/form_tareas'}}"><button class="mt-5">Nueva tarea</button></a>
+         <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

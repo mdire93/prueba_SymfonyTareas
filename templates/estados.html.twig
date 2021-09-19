@@ -1,0 +1,44 @@
+
+ {% extends 'base.html.twig'%}
+
+        {% block stylesheets %}
+        {{parent()}}
+        {% endblock %}
+        
+
+        {% block body %} 
+
+        <h2 class="title">ESTADOS DE LAS TAREAS</h2>
+        
+        
+        <table class="table" >
+            <thead>
+                <th>Estado</th>
+                <th>Descripción</th> 
+                <th> </th>
+            </thead>
+            
+            <tbody>
+                {% for estado in estados %}
+            <tr>
+                <td> {{ estado.nombre }}</td>
+                <td> {{ estado.descripcion }}</td>
+               
+                
+                {% if app.session.get('usuario') %}
+                <td>
+                    <a href="{{ path('editestado', {'id' : estado.id }) }}"><button>Editar</button></a>
+                </td>
+                {% endif %}
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+                
+        <a href="{{ '/form_estado' }}"><button class="mt-5">Añadir nuevo estado </button></a>
+        <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+        {% endblock %}
+        {% block javascripts %}
+       
+        {% endblock %}
+  

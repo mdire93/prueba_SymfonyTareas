@@ -1,0 +1,71 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+ 
+ <h2 class="title">LISTADO DE USUARIOS</h2>
+ {% if app.session.get('usuario') %}
+
+     
+ <form action="{{'/buscarusuario'}}" name="buscar">
+    <label for="buscar">Buscar usuario por nombre: </label>
+     <input class="mb-2 buscar" type="text" name="buscar" placeholder="Buscar usuario..."> 
+     <input type="submit" value="Buscar">
+ </form>
+     <a href="{{'/usuarios'}}"><button>Ver todos</button></a>
+
+ <table class="table">
+     
+     <thead class="table_title">
+         <th> Usuario </th>
+         <th colspan="2">Nombre</th>
+         <th> Email</th>
+         <th> Dirección</th>
+
+         <th colspan="2"> </th>
+     </thead>
+     
+     <tbody>
+         {% for usuario in usuarios %}
+         
+         <tr>
+             <td> {{usuario.usuario}}</td>
+         <td colspan="2"> {{ usuario.nombre }}
+              {{ usuario.apellido }}</td>
+        <td> {{ usuario.email }}</td>     
+         <td> {{ usuario.direccion }}</td>
+            
+         <td> {{ usuario.estado }}</td>
+         <td>
+         <a href="{{ path('form_edituser', {'id' : usuario.id }) }}"><button>Editar</button></a>
+        </td>
+         
+         </tr>
+         {% endfor %}
+     </tbody>
+      </table>
+         <a href="{{'/form_usuario'}}"><button class="mt-5">Nuevo usuario</button></a>
+         <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+         
+ {% else %}
+ <div class="text-center">
+     
+ <p> PARA VER LOS USUARIOS DE LA APLICACIÓN ES NECESARIO INICIAR SESIÓN</p>
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>
+ <a href="{{ '/login' }}"><button class="mt-5">LOGIN</button></a>
+
+ </div>
+ {% endif %}
+
+
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

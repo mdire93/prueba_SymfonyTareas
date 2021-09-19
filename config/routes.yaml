@@ -1,0 +1,31 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+inicio:
+  path: /
+  controller: APP\Controller\DefaultController::inicio
+form_estado:
+  path: /form_estado
+  controller: APP\Controller\DefaultController::form_estado
+form_usuarios:
+  path: /form_usuarios
+  controller: APP\Controller\DefaultController::form_usuarios
+editestado:
+  path: /editestado/{id}
+  controller: APP\Controller\DefaultController::editestado
+edittarea:
+  path: /edittarea/{id}
+  controller: APP\Controller\DefaultController::edittarea
+editarestado:
+  path: /editarestado/{id}
+  controller: APP\Controller\DefaultController::editarestado
+form_edituser:
+  path: /form_edituser/{id}
+  controller: APP\Controller\DefaultController::form_edituser
+editarusuario:
+  path: /editarusuario/{id}
+  controller: APP\Controller\DefaultController::editarusuario
+editartarea:
+  path: /editartarea/{id}
+  controller: APP\Controller\DefaultController::editartarea
+

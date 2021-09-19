@@ -1,0 +1,26 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">LOGIN</h2>
+
+ <form class=" tabla formstatus" action="{{'/login_usuario'}}">
+    <label class="field" for="usuario">Usuario: </label>
+    <input class="field" type="text" name="usuario" id="usuario">
+    <label class="field" for="pass">Password: </label>
+    <input class="field" type="password" name="pass" id="pass">
+    
+    <input class="menu_item mt-4" type="submit" name="login">
+</form>
+
+         
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

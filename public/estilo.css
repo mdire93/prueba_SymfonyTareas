@@ -1,0 +1,46 @@
+html {
+    margin: 1rem;
+}
+.title {
+    background: #93dfc5;
+    font-weight: bold;
+    border: 1px solid ;
+}
+
+thead {
+    
+    background: rgb(155, 241, 213);
+}
+.menu {
+    border-radius:3px 3px 3px;
+    border: 1px solid;
+    padding: 1rem;
+    background: rgb(49, 202, 151);
+}
+
+.menu_item {
+    display: inline;
+    margin:0.5rem;
+    padding: 0.5rem;
+    border-radius:3px 3px 3px;
+    border: 1px solid;
+    font-weight: bold;
+    text-decoration: none;
+}
+.menu_item:hover{
+    background: rgb(19, 182, 125);
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+.buscar{
+    border-radius:3px 3px 3px;
+}
+.formstatus, .formuser, .formtask{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "field field";
+}
+.field {
+    margin: 1rem 0rem;
+}

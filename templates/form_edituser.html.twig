@@ -1,0 +1,42 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">EDITAR USUARIO</h2>
+ 
+ <form class="formuser" action="{{path('editarusuario', {'id' : usuario.id })}}">
+     <label class="field" for="name">Nombre: </label>
+     <input class="field" type="text" name="nombre" id="nombre" value="{{usuario.nombre}}">
+     <label class="field" for="apellido">Apellido: </label>
+     <input class="field" type="text" name="apellido" id="apellido" value="{{usuario.apellido}}"> 
+     <label class="field" for="email">Email: </label>
+     <input class="field" type="text" name="email" id="email" value="{{usuario.email}}"> 
+     <label class="field" for="pass">Contraseña: </label>
+     <input class="field" type="password" name="pass" id="pass" value="{{usuario.pass}}"> 
+     <label class="field" for="direccion">Dirección: </label>
+     <input class="field" type="text" name="direccion" id="direccion" value="{{usuario.direccion}}"> 
+     <label class="field" for="habilitado">Usuario habilitado: </label>
+      {% if usuario.estado == 'Admin' %} 
+      <p> Este usuario no se puede desactivar. Es el administrador del sitio.</p>
+      {% else %}
+        {% if usuario.estado == 'habilitado' %}
+           <input class="field" type="checkbox" name="desabilitado" checked value="desabilitado">
+        {% else %}
+        <input class="field" type="checkbox" name="habilitado" value="habilitado">
+        {% endif %}
+    {% endif %}
+     <input type="submit" name="add_user">
+ </form>
+ 
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

@@ -1,0 +1,62 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">EDITAR TAREA</h2>
+ 
+ <form class="formstatus" action="{{  path('editartarea', {'id' : tarea.id }) }}">
+     <label class="field" for="nombre">Tarea: </label>
+     <input class="field" type="text" disabled name="nombre" id="nombre" value ="{{tarea.nombre}}">
+     <label class="field" for="fecha">Fecha de creación: </label>
+     <input class="field" type="text" disabled name="fecha" id="fecha" value ="{{tarea.fechaCreacion}}">
+     <label class="field" for="descripcion">Descripción: </label>
+     <textarea class="field" name="descripcion" id="descripcion" disabled>
+         {{tarea.descripcion}}
+     </textarea> 
+     <label class="field" for="usuario">Usuario Asignado:
+        {% for usuario in usuarios %}
+            {% if (tarea.idUsuario == usuario.id)  %}
+                {{ usuario.usuario}}
+            {% endif %}
+        {% endfor %}
+     </label>
+     <select class="field" name="usuario">
+         {% for usuario in usuarios %}
+            {% if (tarea.idUsuario == usuario.id)  %}
+            {{ usuario.usuario}}
+            {% endif %}
+            <option value="{{usuario.id}}"> {{usuario.usuario}}</option>
+        {% endfor %}
+     </select>
+     
+     <label class="field" for="usuario">Estado actual de la tarea:
+        {% for estado in estados %}
+            {% if (tarea.idEstado == estado.id)  %}
+                {{ estado.nombre}}
+            {% endif %}
+        {% endfor %}
+     </label>
+     <select class="field" name="estado">
+         {% for estado in estados %}
+            {% if (tarea.idEstado == estado.id)  %}
+            {{ estado.nombre}}
+            {% endif %}
+            <option value="{{estado.id}}"> {{estado.nombre}}</option>
+        {% endfor %}
+     </select>
+     <a href="{{'/tareas'}}"><input type="button" name="cancell" value="<- Volver "></a>
+     <input type="submit" name="edit" value="Editar tarea">
+ </form>
+
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

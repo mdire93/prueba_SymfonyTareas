@@ -1,0 +1,30 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">EDITAR ESTADO</h2>
+ 
+ <form class="formstatus" action="{{  path('editarestado', {'id' : estado.id }) }}">
+     <label class="field" for="nombre">Estado: </label>
+     <input class="field" type="text" name="nombre" id="nombre" value ="{{estado.nombre}}">
+     <label class="field" for="descripcion">Descripción: </label>
+     <textarea class="field" name="descripcion" id="descripcion">
+         {{estado.descripcion}}
+     </textarea> 
+     
+     <a href="{{'/estados'}}"><input type="button" name="cancell" value="<- Volver "></a>
+     <input type="submit" name="edit" value="Editar tarea">
+ </form>
+
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

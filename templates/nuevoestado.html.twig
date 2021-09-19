@@ -1,0 +1,27 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">NUEVO ESTADO</h2>
+ 
+ <form class="formstatus" action="{{'/nuevoestado'}}">
+     <label class="field" for="name">Estado: </label>
+     <input class="field" type="text" name="name" id="name">
+     <label class="field" for="description">Descripción: </label>
+     <textarea class="field" name="description" id="description"></textarea> 
+     
+     <input type="submit" name="add_status">
+ </form>
+
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}

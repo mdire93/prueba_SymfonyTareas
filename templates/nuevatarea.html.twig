@@ -1,0 +1,36 @@
+
+ {% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ {{parent()}}
+ {% endblock %}
+ 
+
+ {% block body %} 
+
+ <h2 class="title">NUEVA TAREA</h2>
+ 
+ <form class="formstatus" action="{{'/nuevatarea'}}">
+     <label class="field" for="name" required>Nombre: *</label>
+     <input class="field" type="text" name="name" id="name">
+     <label class="field" for="description">Descripción: </label>
+     <input class="field" type="text" name="description" id="descripcion"> 
+     <label class="field" for="userid" required >Usuario encargado: </label>
+        <select  name="userid" class="field" >
+            <option value=""> -- </option>
+            {% for usuario in usuarios %}
+            <option  value="{{usuario.id}}"> {{ usuario.nombre }} {{ usuario.apellido }} </option>
+            {% endfor %}
+        </select>
+       <label class="field" for="statusid">Estado de la tarea: </label>
+       <input class="field" type="text" disabled name="statusid" value="Pendiente">
+     
+     <input type="submit" name="add_status">
+ </form>
+ 
+ <a href="{{ '/' }}"><button class="mt-5">Ir a inicio</button></a>       
+
+ {% endblock %}
+ {% block javascripts %}
+
+ {% endblock %}
