@@ -11,13 +11,12 @@
  <h2 class="title">NUEVA TAREA</h2>
  
  <form class="formstatus" action="{{'/nuevatarea'}}">
-     <label class="field" for="name" required>Nombre: *</label>
-     <input class="field" type="text" name="name" id="name">
+     <label class="field" for="name" >Nombre: *</label>
+     <input class="field" type="text" name="name" id="name" required>
      <label class="field" for="description">Descripción: </label>
      <input class="field" type="text" name="description" id="descripcion"> 
-     <label class="field" for="userid" required >Usuario encargado: </label>
+     <label class="field" for="userid"  >Usuario encargado: </label>
         <select  name="userid" class="field" >
-            <option value=""> -- </option>
             {% for usuario in usuarios %}
             <option  value="{{usuario.id}}"> {{ usuario.nombre }} {{ usuario.apellido }} </option>
             {% endfor %}
