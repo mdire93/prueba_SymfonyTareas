@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bbdd_kosaas`
 --
-CREATE DATABASE IF NOT EXISTS `bbdd_kosaas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `bbdd_tareas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `bbdd_kosaas`;
 
 -- --------------------------------------------------------
